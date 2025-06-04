@@ -33,11 +33,11 @@ export default function Home() {
       <main className="min-h-screen bg-gradient-to-br from-black via-zinc-900 to-neutral-900 text-white px-6 py-16 flex flex-col items-center font-sans">
         <header className="w-full max-w-6xl flex justify-between items-center mb-12">
           <Image src="/ironliving-logo.png" alt="Iron Living Logo" width={140} height={60} />
-          <button onClick={toggleForm} className="text-red-500 hover:underline text-sm font-semibold">Apply</button>
+          <a href="#apply" className="text-red-500 hover:underline text-sm font-semibold">Apply</a>
         </header>
 
         <section className="max-w-4xl text-center mb-20">
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-6" style={{ color: '#E6B800' }}>
+          <h1 className="text-5xl md:text-7xl font-extrabold mb-6" style={{ color: '#FFD700' }}>
             Train Hard. <span className="text-red-500">Live Free.</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
@@ -52,7 +52,7 @@ export default function Home() {
         </section>
 
         <section className="max-w-3xl text-center mb-20">
-          <h2 className="text-4xl font-bold mb-4" style={{ color: '#E6B800' }}>What is Iron Living?</h2>
+          <h2 className="text-4xl font-bold mb-4" style={{ color: '#FFD700' }}>What is Iron Living?</h2>
           <p className="text-gray-300 text-lg">
             Created by Zach, Iron Living is about building strength that shows up outside the gym — climbing mountains, pushing through miles, staying ready for anything. This isn’t about beach muscles. It’s about functional freedom.
           </p>
@@ -68,14 +68,17 @@ export default function Home() {
         </section>
 
         <section className="max-w-4xl text-center mb-20">
-          <h3 className="text-3xl font-bold mb-6" style={{ color: '#E6B800' }}>From the Gram</h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {['ig-1.jpg', 'ig-2.jpg', 'ig-3.jpg'].map((img, index) => (
-              <div key={index} className="aspect-square overflow-hidden rounded-xl shadow-md border border-white/10">
+          <h3 className="text-3xl font-bold mb-6" style={{ color: '#FFD700' }}>From the Gram</h3>
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center">
+            {["ig-1.jpg", "ig-2.jpg", "ig-3.jpg", "ig-4.jpg"].map((img, index) => (
+              <div
+                key={index}
+                className="aspect-square overflow-hidden rounded-xl shadow-md border border-white/10"
+              >
                 <img
                   src={`/${img}`}
                   alt={`Instagram Post ${index + 1}`}
-                  className="w-full h-full object-cover object-top"
+                  className={`w-full h-full object-cover ${img === 'ig-3.jpg' ? 'object-center' : 'object-top'}`}
                 />
               </div>
             ))}
@@ -85,30 +88,31 @@ export default function Home() {
           </p>
         </section>
 
-        <section className="w-full max-w-3xl mb-20 text-center">
-          <h3 className="text-3xl font-bold mb-6" style={{ color: '#E6B800' }}>What Clients Say</h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <TestimonialCard name="Mason H." title="Outdoor Athlete" quote="I train to summit peaks, not just squat racks. Zach gets it. Real results for real life." />
-            <TestimonialCard name="Kyle T." title="Marathoner" quote="The endurance programming is next level. I’ve hit PRs without wrecking my joints." />
-            <TestimonialCard name="Olivia B." title="Weekend Warrior" quote="I never liked gyms, but Zach’s style made me love training again. Highly recommend." />
+        <section className="w-full max-w-6xl mb-20 text-center">
+          <h3 className="text-3xl font-bold mb-6" style={{ color: '#FFD700' }}>What Clients Say</h3>
+          <div className="grid md:grid-cols-3 gap-6 justify-center">
+            <TestimonialCard name="John F." title="Outdoor Athlete" quote="I've been to two sessions with Zach that left me crippled and understanding the technique and form they enforce is working." />
+            <TestimonialCard name="Benji S." title="Weekend Warrior" quote="Zach exceeded my expectations. He listens, adapts, and ensures you're training safely and effectively." />
+            <TestimonialCard name="Kevin R." title="Trail Runner" quote="Zach has helped me pursue my goals in a consistent and helpful manner. He's always pushing me to improve." />
+            <TestimonialCard name="Marcus D." title="Shoulder Rehab" quote="Zach is kind and energetic. His workouts helped me rehab my shoulder and get back to 100%." />
+            <TestimonialCard name="Tyler M." title="Transformation Client" quote="Zach provides great feedback and keeps me motivated. I never thought I’d see the gains I’m seeing now." />
+            <TestimonialCard name="Alexa V." title="Busy Professional" quote="Zach’s online coaching worked perfectly for my schedule. Highly recommend his programming and support." />
           </div>
         </section>
 
         <section className="w-full max-w-3xl mb-20">
-          <h3 className="text-3xl font-bold text-center mb-6" style={{ color: '#E6B800' }}>Zach In Action</h3>
-          <div className="aspect-w-16 aspect-h-9">
-            <iframe
-              title="Iron Living Video"
-              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-              allowFullScreen
-              className="rounded-xl w-full h-96 border-0 shadow-lg"
-            ></iframe>
-          </div>
+          <h3 className="text-3xl font-bold text-center mb-6" style={{ color: '#FFD700' }}>Zach In Action</h3>
+          <video
+            src="/zach-demo.MOV"
+            controls
+            className="w-full rounded-xl shadow-lg"
+          ></video>
         </section>
 
         <AnimatePresence>
           {showForm && (
             <motion.section
+              id="apply"
               ref={formRef}
               className="w-full max-w-3xl mb-20"
               initial={{ opacity: 0, y: 40 }}
@@ -116,10 +120,10 @@ export default function Home() {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-center mb-6" style={{ color: '#E6B800' }}>Apply for Coaching</h2>
+              <h2 className="text-3xl font-bold text-center mb-6" style={{ color: '#FFD700' }}>Apply for Coaching</h2>
               <iframe
                 title="Coaching Application Form"
-                src="https://form.jotform.com/251482303686156"
+                src="https://form.jotform.com/251546975819069"
                 width="100%"
                 height="600"
                 className="rounded-xl border-0 shadow-lg"
@@ -143,7 +147,7 @@ export default function Home() {
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
     <div className="bg-white/5 border border-white/10 rounded-2xl p-6 shadow-lg hover:shadow-xl transition text-left">
-      <h3 className="text-xl font-bold mb-2" style={{ color: '#E6B800' }}>{title}</h3>
+      <h3 className="text-xl font-bold mb-2" style={{ color: '#FFD700' }}>{title}</h3>
       <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
     </div>
   );
