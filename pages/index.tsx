@@ -1,4 +1,5 @@
-// pages/index.tsx
+// pages/index.tsx // trigger redeploy
+
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
@@ -70,7 +71,7 @@ export default function Home() {
         <section className="max-w-4xl text-center mb-20">
           <h3 className="text-3xl font-bold mb-6" style={{ color: '#FFD700' }}>From the Gram</h3>
           <div className="grid grid-cols-2 md:grid-cols-2 gap-4 justify-center">
-            {["ig-1.jpg", "ig-2.JPG", "ig-3.JPG", "ig-4.JPG"].map((img, index) => (
+            {["ig-1.jpg", "ig-2.jpg", "ig-3.jpg", "ig-4.jpg"].map((img, index) => (
               <div
                 key={index}
                 className="aspect-square overflow-hidden rounded-xl shadow-md border border-white/10"
